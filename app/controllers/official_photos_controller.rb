@@ -1,28 +1,21 @@
 class OfficialPhotosController < ApplicationController
   before_action :set_official_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_shop, only: [:index, :show]
 
-  # GET /official_photos
-  # GET /official_photos.json
   def index
-    @official_photos = OfficialPhoto.all
+    @official_photos = @shop.official_photos
   end
 
-  # GET /official_photos/1
-  # GET /official_photos/1.json
   def show
   end
 
-  # GET /official_photos/new
   def new
     @official_photo = OfficialPhoto.new
   end
 
-  # GET /official_photos/1/edit
   def edit
   end
 
-  # POST /official_photos
-  # POST /official_photos.json
   def create
     @official_photo = OfficialPhoto.new(official_photo_params)
 
@@ -37,8 +30,6 @@ class OfficialPhotosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /official_photos/1
-  # PATCH/PUT /official_photos/1.json
   def update
     respond_to do |format|
       if @official_photo.update(official_photo_params)
@@ -51,8 +42,6 @@ class OfficialPhotosController < ApplicationController
     end
   end
 
-  # DELETE /official_photos/1
-  # DELETE /official_photos/1.json
   def destroy
     @official_photo.destroy
     respond_to do |format|
@@ -62,12 +51,14 @@ class OfficialPhotosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def set_shop
+      @shop = Shop.find(params[:shop_id])
+    end
+
     def set_official_photo
       @official_photo = OfficialPhoto.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def official_photo_params
       params.require(:official_photo).permit(:title, :description)
     end
