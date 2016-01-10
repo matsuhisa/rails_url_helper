@@ -1,0 +1,2 @@
+module OfficialPhotosHelper
+end
