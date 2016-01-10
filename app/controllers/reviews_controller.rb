@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  layout 'shop'
 
   def index
     @shop = Shop.find(params[:shop_id])

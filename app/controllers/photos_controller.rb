@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
   before_action :set_shop, only: [:index, :show]
+  layout 'shop'
 
   def index
     @photos = @shop.photos
