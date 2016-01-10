@@ -1,19 +1,16 @@
 %ul.menu
   %li
-    .menu_item
-      - unless current_page?(shops_path)
-        = link_to '店舗', @shop
-      - else
+    - shop_menu = current_page?(shop_path(@shop))
+    .menu_item{style: shop_menu ? "color: red;" : ""}
+      = link_to_if_with_block !shop_menu, @shop do
         店舗
   %li
-    .menu_item
-      - unless current_page?(shop_reviews_path(@shop))
-        = link_to '口コミ', shop_reviews_path(@shop)
-      - else
+    - reviews_menu = request_path_include?('reviews')
+    .menu_item{style: reviews_menu ? "color: red;" : ""}
+      = link_to_if_with_block !reviews_menu, shop_reviews_path(@shop) do
         口コミ
   %li
-    .menu_item
-      - unless current_page?(shop_photos_path(@shop))
-        = link_to '写真', shop_photos_path(@shop)
-      - else
+    - phtos_menu = request_path_include?('photos')
+    .menu_item{style: phtos_menu ? "color: red;" : ""}
+      = link_to_if_with_block !phtos_menu, shop_photos_path(@shop) do
         写真
