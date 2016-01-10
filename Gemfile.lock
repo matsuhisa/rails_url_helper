@@ -80,6 +80,7 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
+    mysql2 (0.4.2)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     parser (2.2.3.0)
@@ -159,6 +160,7 @@ DEPENDENCIES
   faml
   jbuilder
   jquery-rails
+  mysql2
   rails (= 4.2.5)
   sass-rails
   sdoc (~> 0.4.0)
