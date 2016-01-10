@@ -1,4 +1,19 @@
-%ul
-  %li= link_to '店舗', @shop
-  %li= link_to '口コミ', shop_reviews_path(@shop)
-  %li= link_to '写真', shop_photos_path(@shop)
+%ul.menu
+  %li
+    .menu_item
+      - unless current_page?(shops_path)
+        = link_to '店舗', @shop
+      - else
+        店舗
+  %li
+    .menu_item
+      - unless current_page?(shop_reviews_path(@shop))
+        = link_to '口コミ', shop_reviews_path(@shop)
+      - else
+        口コミ
+  %li
+    .menu_item
+      - unless current_page?(shop_photos_path(@shop))
+        = link_to '写真', shop_photos_path(@shop)
+      - else
+        写真
